@@ -73,22 +73,22 @@ h1{font-size:1.35rem;margin:0}
 (function(){
   var T={
     es:{title:"El test de Phantom",
-      intro:"Phantom asegura que nadie cuida el planeta digital. Responded a las 6 preguntas. Si acertáis todas, la página os dará el segundo número del código.",
+      intro:"Phantom asegura que nadie cuida el planeta digital. Responded a las 6 preguntas. Si acertáis todas, la página os dará la cifra de ●.",
       check:"Comprobar respuestas",
       pending:"Faltan preguntas por responder: marcad una opción en cada una.",
       okTitle:"¡Todo correcto! Phantom está impresionado.",
-      okText:"El segundo número del código es:",
-      okNote:"Apuntadlo en vuestra hoja de ruta.",
+      okText:"La cifra de ● es:",
+      okNote:"Apuntadla en vuestro paquete.",
       noTitle:function(k,n){return "Lleváis "+k+" de "+n+" bien."},
       noText:"Revisad las preguntas marcadas en rojo y volved a probar.",
       flag:"Revisad esta pregunta"},
     en:{title:"Phantom’s test",
-      intro:"Phantom claims that nobody looks after the digital planet. Answer the 6 questions. If you get them all right, the page will give you the second number of the code.",
+      intro:"Phantom claims that nobody looks after the digital planet. Answer the 6 questions. If you get them all right, the page will give you the digit of ●.",
       check:"Check answers",
       pending:"Some questions are unanswered: pick one option in each.",
       okTitle:"All correct! Phantom is impressed.",
-      okText:"The second number of the code is:",
-      okNote:"Write it on your route sheet.",
+      okText:"The digit of ● is:",
+      okNote:"Write it in your pack.",
       noTitle:function(k,n){return "You have "+k+" out of "+n+" right."},
       noText:"Review the questions marked in red and try again.",
       flag:"Review this question"}
@@ -108,7 +108,8 @@ h1{font-size:1.35rem;margin:0}
          en:{q:"True or false: every time an AI generates a text or an image, it uses energy in servers.",o:["True","False"]}}
   ];
   var CODE=atob("Mw==");
-  var lang="es", sel=[], bad=[], shown=false;
+  var lang=(location.search.indexOf("lang=en")>-1)?"en":"es", sel=[], bad=[], shown=false;
+  Array.prototype.forEach.call(document.querySelectorAll(".lang button"),function(x){x.setAttribute("aria-pressed",x.getAttribute("data-l")===lang?"true":"false")});
   var $=function(id){return document.getElementById(id)};
   function render(){
     var t=T[lang];
